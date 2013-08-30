@@ -8,13 +8,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
-public class Scribbler extends Activity implements Observer {
+public class Scribbler extends Activity implements Observer,OnClickListener {
 	private static final String TAG = "chat.Scribbler";
     DrawView drawView;
     
@@ -23,6 +26,9 @@ public class Scribbler extends Activity implements Observer {
     //private Button orangeButton,redButton,greenButton,blueButton,
     private Button blueButton, clearPageButton, redButton;
     private SeekBar brushSlider, brushBoardSlider;
+    
+    private Button one,two,three,four,five,six,seven,eight,nine;
+	private TextView answer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -110,9 +116,37 @@ public class Scribbler extends Activity implements Observer {
 				drawView.clearCanvas();
 			}
 		});
+        
+        one= (Button) findViewById(R.id.one);
+        one.setOnClickListener(this);
+        two= (Button) findViewById(R.id.two);
+        two.setOnClickListener(this);
+        three= (Button) findViewById(R.id.three);
+        three.setOnClickListener(this);
+        four= (Button) findViewById(R.id.four);
+        four.setOnClickListener(this);
+        five= (Button) findViewById(R.id.five);
+        five.setOnClickListener(this);
+        six= (Button) findViewById(R.id.six);
+        six.setOnClickListener(this);
+        seven= (Button) findViewById(R.id.seven);
+        seven.setOnClickListener(this);
+        eight= (Button) findViewById(R.id.eight);
+        eight.setOnClickListener(this);
+        nine= (Button) findViewById(R.id.nine);
+        nine.setOnClickListener(this);
+        
+        answer = (TextView) findViewById(R.id.answer);
     }
     
     private boolean isRemote = false;
+    
+    private int gravityXPotitionRandomizer(){
+    	int posNeg = Math.random() > 0.5 ? -1 : 1;
+    	int posn = (int) (Math.random() * 100);
+    	return posn * posNeg;
+    }
+    
 
 	@Override
 	public void update(Observable o, Object arg) {
@@ -142,6 +176,19 @@ public class Scribbler extends Activity implements Observer {
 									@Override
 									public void run() {
 										drawView.clearCanvasFromRemote();
+									}
+								});
+				        	}
+				        	else if ( message.messageType == 5 ){
+				        		Handler handle = new Handler(getMainLooper());
+				        		handle.post(new Runnable() {
+									
+									@Override
+									public void run() {
+//										Toast toast = Toast.makeText(getApplicationContext(), message.message + " : " + message.pointerPosition, Toast.LENGTH_SHORT);
+//										toast.setGravity(Gravity.CENTER_VERTICAL, gravityXPotitionRandomizer(), gravityXPotitionRandomizer());
+//										toast.show();
+										answer.setText(""+message.pointerPosition);
 									}
 								});
 				        	}
@@ -199,6 +246,21 @@ public class Scribbler extends Activity implements Observer {
 		        	//}
 		        }		
 		  //}
+		
+	}
+
+	@Override
+	public void onClick(View v) {
+		Button clicked = (Button) v;
+		
+		int buttonText = Integer.parseInt(clicked.getText().toString());
+		
+		//Toast.makeText(getApplicationContext(), "" + buttonText, Toast.LENGTH_SHORT).show();
+		answer.setText(""+buttonText);
+		MessageObject mo = new MessageObject();
+		mo.messageType = 5;
+		mo.pointerPosition = buttonText;
+        mChatApplication.newLocalUserMessage(mo);
 		
 	}
 }

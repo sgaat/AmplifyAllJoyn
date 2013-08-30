@@ -29,7 +29,7 @@ import android.widget.TextView;
 public class HostActivity extends Activity implements Observer {
     private static final String TAG = "chat.HostActivity";
     
-    public static String SHARE_CHANNEL_NAME = "AmpHack3r20B12";
+    public static String SHARE_CHANNEL_NAME = "AmpHack3r20B123";
      
     public void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate()");
