@@ -47,4 +47,7 @@ public interface ChatInterface {
     
     @BusSignal
     public void CompressPlots(String points) throws BusException;
+    
+    @BusSignal
+    public void SendCounter(int number) throws BusException;
 }
