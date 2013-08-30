@@ -1247,6 +1247,8 @@ import android.util.Log;
 							mHostChatInterface.SetCanvasColor(message.color, message.pointerPosition);
 						}else if ( message.messageType == 4 ){
 							mHostChatInterface.CompressPlots(message.message);
+						}else if ( message.messageType == 5 ){
+							mHostChatInterface.SendCounter(message.pointerPosition);
 						}
 					}
 				} else {
@@ -1260,6 +1262,8 @@ import android.util.Log;
 						mChatInterface.SetCanvasColor(message.color, message.pointerPosition);
 					}else if ( message.messageType == 4 ){
 						mChatInterface.CompressPlots(message.message);
+					}else if ( message.messageType == 5 ){
+						mChatInterface.SendCounter(message.pointerPosition);
 					}
 				}
 			} catch (BusException ex) {
@@ -1292,6 +1296,10 @@ import android.util.Log;
 		}
 
 		public void CompressPlots(String points) throws BusException {
+			
+		}
+		
+		public void SendCounter(int number) throws BusException{
 			
 		}
 	}
@@ -1602,6 +1610,68 @@ import android.util.Log;
 		MessageObject mo = new MessageObject();
 		mo.messageType = 4;
 		mo.message = points;
+		mChatApplication.newRemoteUserMessage(nickname, mo);
+	}
+	
+	
+	/**
+	 * The signal handler for messages received from the AllJoyn bus.
+	 * 
+	 * Since the messages sent on a chat channel will be sent using a bus
+	 * signal, we need to provide a signal handler to receive those signals.
+	 * This is it. Note that the name of the signal handler has the first letter
+	 * capitalized to conform with the DBus convention for signal handler names.
+	 */
+	@BusSignalHandler(iface = "org.alljoyn.bus.samples.chat", signal = "SendCounter")
+	public void SendCounter(int number){
+
+		/*
+		 * See the long comment in doJoinSession() for more explanation of why
+		 * this is needed.
+		 * 
+		 * The only time we allow a signal from the hosted session ID to pass
+		 * through is if we are in mJoinedToSelf state. If the source of the
+		 * signal is us, we also filter out the signal since we are going to
+		 * locally echo the signal.
+		 */
+		String uniqueName = mBus.getUniqueName();
+		MessageContext ctx = mBus.getMessageContext();
+		Log.i(TAG, "SendCounter(): use sessionId is " + mUseSessionId);
+		Log.i(TAG, "SendCounter(): message sessionId is " + ctx.sessionId);
+
+		/*
+		 * Always drop our own signals which may be echoed back from the system.
+		 */
+		if (ctx.sender.equals(uniqueName)) {
+			Log.i(TAG, "SendCounter(): dropped our own signal received on session "
+					+ ctx.sessionId);
+			return;
+		}
+
+		/*
+		 * Drop signals on the hosted session unless we are joined-to-self.
+		 */
+		if (mJoinedToSelf == false && ctx.sessionId == mHostSessionId) {
+			Log.i(TAG, "SendCounter(): dropped signal received on hosted session "
+					+ ctx.sessionId + " when not joined-to-self");
+			return;
+		}
+
+		/*
+		 * To keep the application simple, we didn't force users to choose a
+		 * nickname. We want to identify the message source somehow, so we just
+		 * use the unique name of the sender's bus attachment.
+		 */
+		String nickname = ctx.sender;
+		nickname = nickname
+				.substring(nickname.length() - 10, nickname.length());
+
+		Log.i(TAG, "SendCounter(): signal received from nickname "
+				+ nickname);
+		MessageObject mo = new MessageObject();
+		mo.messageType = 5;
+		mo.pointerPosition = number;
+		mo.message = nickname;
 		mChatApplication.newRemoteUserMessage(nickname, mo);
 	}
 

@@ -70,6 +70,82 @@
 	            style="?android:attr/buttonBarButtonStyle"
 	            />
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/numberPanel"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/backgroundPanel"
+            android:gravity="center"
+            >
+            <Button android:id="@+id/one"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="5dp"
+	            android:text="1"
+	            />
+            <Button android:id="@+id/two"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="5dp"
+	            android:text="2"
+	            />
+            <Button android:id="@+id/three"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="5dp"
+	            android:text="3"
+	            />
+            <Button android:id="@+id/four"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="5dp"
+	            android:text="4"
+	            />
+            <Button android:id="@+id/five"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="5dp"
+	            android:text="5"
+	            />
+            <Button android:id="@+id/six"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="5dp"
+	            android:text="6"
+	            />
+            <Button android:id="@+id/seven"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="5dp"
+	            android:text="7"
+	            />
+            <Button android:id="@+id/eight"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="5dp"
+	            android:text="8"
+	            />
+            <Button android:id="@+id/nine"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="5dp"
+	            android:text="9"
+	            />
+            <TextView 
+                android:layout_marginLeft="20dp"
+                android:text="Answer = "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"/>
+            <TextView 
+                android:id="@+id/answer"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="50sp"/>
+        </LinearLayout>
         <Button android:id="@+id/clearButton"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
