@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout 
+        android:id="@+id/topPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:id="@+id/colorPanel"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/buttonBarStyle"
+            >
+            <TextView 
+                android:text="Brush Color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="15sp"/>
+            <SeekBar
+                android:id="@+id/brushSlider"
+                android:layout_width="1000dp"
+                android:layout_height="wrap_content" 
+                android:layout_gravity="center_vertical"
+                android:progress="0"
+                android:max="16777215"
+                />
+            <Button android:id="@+id/blueButton"
+	            android:layout_width="40dp"
+	            android:layout_height="wrap_content"
+	            android:background="#ff000000"
+	            android:layout_margin="5dp"
+	            style="?android:attr/buttonBarButtonStyle"
+	            />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/backgroundPanel"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/colorPanel"
+            style="?android:attr/buttonBarStyle"
+            >
+            <TextView 
+                android:text="Board Color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="15sp"/>
+            <SeekBar
+                android:id="@+id/brushBoardSlider"
+                android:layout_width="1000dp"
+                android:layout_height="wrap_content" 
+                android:layout_gravity="center_vertical"
+                android:progress="16777215"
+                android:max="16777215"
+                />
+            <Button android:id="@+id/redButton"
+	            android:layout_width="40dp"
+	            android:layout_height="wrap_content"
+	            android:background="#ffffffff"
+	            android:layout_margin="5dp"
+	            style="?android:attr/buttonBarButtonStyle"
+	            />
+        </LinearLayout>
+        <Button android:id="@+id/clearButton"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Clear Page"
+            android:layout_toRightOf="@id/colorPanel"/>
+    </RelativeLayout>
+	<org.alljoyn.bus.sample.chat.DrawView
+	    android:id="@+id/drawView"
+	    android:layout_below="@id/topPanel" 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"/>
+</RelativeLayout>
