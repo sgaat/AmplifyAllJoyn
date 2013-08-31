@@ -47,6 +47,10 @@ public class TabWidget extends TabActivity {
         intent = new Intent().setClass(this, Scribbler.class);
         spec = tabHost.newTabSpec("whiteboard").setIndicator("Share", res.getDrawable(R.drawable.ic_tab_use)).setContent(intent);
         tabHost.addTab(spec);
+        
+        intent = new Intent().setClass(this, StatisticsActivity.class);
+        spec = tabHost.newTabSpec("stat").setIndicator("Statistics", res.getDrawable(R.drawable.ic_tab_use)).setContent(intent);
+        tabHost.addTab(spec);
 
         tabHost.setCurrentTab(0);
     }

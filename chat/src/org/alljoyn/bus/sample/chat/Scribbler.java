@@ -8,14 +8,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
 
 public class Scribbler extends Activity implements Observer,OnClickListener {
 	private static final String TAG = "chat.Scribbler";
@@ -139,15 +137,15 @@ public class Scribbler extends Activity implements Observer,OnClickListener {
         answer = (TextView) findViewById(R.id.answer);
     }
     
+    public void onDestroy() {
+        Log.i(TAG, "onDestroy()");
+        mChatApplication = (ChatApplication)getApplication();
+        mChatApplication.deleteObserver(this);
+        super.onDestroy();
+ 	}
+    
     private boolean isRemote = false;
     
-    private int gravityXPotitionRandomizer(){
-    	int posNeg = Math.random() > 0.5 ? -1 : 1;
-    	int posn = (int) (Math.random() * 100);
-    	return posn * posNeg;
-    }
-    
-
 	@Override
 	public void update(Observable o, Object arg) {
 		  Log.i(TAG, "update(" + arg + ")");
