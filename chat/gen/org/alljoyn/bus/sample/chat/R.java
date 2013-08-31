@@ -33,6 +33,7 @@ public final class R {
         public static final int errorOk=0x7f050001;
         public static final int five=0x7f05000e;
         public static final int four=0x7f05000d;
+        public static final int headerPanel=0x7f050023;
         public static final int hostChannelName=0x7f050016;
         public static final int hostChannelStatus=0x7f050017;
         public static final int hostNameCancel=0x7f05001e;
@@ -50,21 +51,24 @@ public final class R {
         public static final int numberPanel=0x7f050009;
         public static final int one=0x7f05000a;
         public static final int redButton=0x7f050008;
+        public static final int sentPanel=0x7f050024;
         public static final int seven=0x7f050010;
         public static final int six=0x7f05000f;
+        public static final int textRecvCounter=0x7f050026;
+        public static final int textSentCounter=0x7f050025;
         public static final int three=0x7f05000c;
         public static final int topPanel=0x7f050002;
         public static final int two=0x7f05000b;
-        public static final int useChannelName=0x7f050023;
-        public static final int useChannelStatus=0x7f050024;
-        public static final int useHistoryList=0x7f050028;
-        public static final int useJoin=0x7f050025;
-        public static final int useJoinCancel=0x7f05002a;
-        public static final int useJoinChannelList=0x7f050029;
-        public static final int useLeave=0x7f050026;
-        public static final int useLeaveCancel=0x7f05002c;
-        public static final int useLeaveOk=0x7f05002b;
-        public static final int useMessage=0x7f050027;
+        public static final int useChannelName=0x7f050027;
+        public static final int useChannelStatus=0x7f050028;
+        public static final int useHistoryList=0x7f05002c;
+        public static final int useJoin=0x7f050029;
+        public static final int useJoinCancel=0x7f05002e;
+        public static final int useJoinChannelList=0x7f05002d;
+        public static final int useLeave=0x7f05002a;
+        public static final int useLeaveCancel=0x7f050030;
+        public static final int useLeaveOk=0x7f05002f;
+        public static final int useMessage=0x7f05002b;
     }
     public static final class layout {
         public static final int alljoynerrordialog=0x7f030000;
@@ -74,9 +78,10 @@ public final class R {
         public static final int hoststartdialog=0x7f030004;
         public static final int hoststopdialog=0x7f030005;
         public static final int main=0x7f030006;
-        public static final int use=0x7f030007;
-        public static final int usejoindialog=0x7f030008;
-        public static final int useleavedialog=0x7f030009;
+        public static final int stats=0x7f030007;
+        public static final int use=0x7f030008;
+        public static final int usejoindialog=0x7f030009;
+        public static final int useleavedialog=0x7f03000a;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
