@@ -476,12 +476,16 @@ public class ChatApplication extends Application implements Observable {
 	 */
 	public synchronized void newLocalUserMessage(MessageObject message) {
 		message.isSelf = true;
+		localMessageCounter++;
 		addInboundItem("Me", message);
 		if (useGetChannelState() == AllJoynService.UseChannelState.JOINED) {
 			message.isSelf = false;
 			addOutboundItem(message);
 		}
 	}
+	
+	public static long remoteMessageCounter = 0;
+	public static long localMessageCounter = 0;
 	
 	/**
 	 * Whenever a user types a message into the channel, we expect the AllJoyn 
@@ -494,6 +498,7 @@ public class ChatApplication extends Application implements Observable {
 	 */
 	public synchronized void newRemoteUserMessage(String nickname, MessageObject message) {
 		message.isSelf = false;
+		remoteMessageCounter++;
 		addInboundItem(nickname, message);
 	}
 

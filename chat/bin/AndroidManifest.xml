@@ -44,6 +44,13 @@
             android:windowSoftInputMode="adjustResize"
             android:label="White board">
         </activity>
+        
+        <activity 
+            android:name=".StatisticsActivity" 
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustResize"
+            android:label="White board">
+        </activity>
 
         <activity 
             android:name=".UseActivity"

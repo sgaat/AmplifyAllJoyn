@@ -1391,14 +1391,14 @@ import android.util.Log;
 		 */
 		String uniqueName = mBus.getUniqueName();
 		MessageContext ctx = mBus.getMessageContext();
-		Log.i(TAG, "Chat(): use sessionId is " + mUseSessionId);
-		Log.i(TAG, "Chat(): message sessionId is " + ctx.sessionId);
+		Log.i(TAG, "PlotPoint(): use sessionId is " + mUseSessionId);
+		Log.i(TAG, "PlotPoint(): message sessionId is " + ctx.sessionId);
 
 		/*
 		 * Always drop our own signals which may be echoed back from the system.
 		 */
 		if (ctx.sender.equals(uniqueName)) {
-			Log.i(TAG, "Chat(): dropped our own signal received on session "
+			Log.i(TAG, "PlotPoint(): dropped our own signal received on session "
 					+ ctx.sessionId);
 			return;
 		}
@@ -1407,7 +1407,7 @@ import android.util.Log;
 		 * Drop signals on the hosted session unless we are joined-to-self.
 		 */
 		if (mJoinedToSelf == false && ctx.sessionId == mHostSessionId) {
-			Log.i(TAG, "Chat(): dropped signal received on hosted session "
+			Log.i(TAG, "PlotPoint(): dropped signal received on hosted session "
 					+ ctx.sessionId + " when not joined-to-self");
 			return;
 		}
@@ -1421,7 +1421,7 @@ import android.util.Log;
 		nickname = nickname
 				.substring(nickname.length() - 10, nickname.length());
 
-		Log.i(TAG, "Chat(): signal received from nickname "
+		Log.i(TAG, "PlotPoint(): signal received from nickname "
 				+ nickname);
 		MessageObject mo = new MessageObject();
 		mo.messageType = 1;
@@ -1455,8 +1455,8 @@ import android.util.Log;
 		 */
 		String uniqueName = mBus.getUniqueName();
 		MessageContext ctx = mBus.getMessageContext();
-		Log.i(TAG, "Chat(): use sessionId is " + mUseSessionId);
-		Log.i(TAG, "Chat(): message sessionId is " + ctx.sessionId);
+		Log.i(TAG, "ClearCanvas(): use sessionId is " + mUseSessionId);
+		Log.i(TAG, "ClearCanvas(): message sessionId is " + ctx.sessionId);
 
 		/*
 		 * Always drop our own signals which may be echoed back from the system.
@@ -1471,7 +1471,7 @@ import android.util.Log;
 		 * Drop signals on the hosted session unless we are joined-to-self.
 		 */
 		if (mJoinedToSelf == false && ctx.sessionId == mHostSessionId) {
-			Log.i(TAG, "Chat(): dropped signal received on hosted session "
+			Log.i(TAG, "ClearCanvas(): dropped signal received on hosted session "
 					+ ctx.sessionId + " when not joined-to-self");
 			return;
 		}
@@ -1485,7 +1485,7 @@ import android.util.Log;
 		nickname = nickname
 				.substring(nickname.length() - 10, nickname.length());
 
-		Log.i(TAG, "Chat(): signal received from nickname "
+		Log.i(TAG, "ClearCanvas(): signal received from nickname "
 				+ nickname);
 		MessageObject mo = new MessageObject();
 		mo.messageType = 2;
@@ -1514,14 +1514,14 @@ import android.util.Log;
 		 */
 		String uniqueName = mBus.getUniqueName();
 		MessageContext ctx = mBus.getMessageContext();
-		Log.i(TAG, "Chat(): use sessionId is " + mUseSessionId);
-		Log.i(TAG, "Chat(): message sessionId is " + ctx.sessionId);
+		Log.i(TAG, "SetCanvasColor(): use sessionId is " + mUseSessionId);
+		Log.i(TAG, "SetCanvasColor(): message sessionId is " + ctx.sessionId);
 
 		/*
 		 * Always drop our own signals which may be echoed back from the system.
 		 */
 		if (ctx.sender.equals(uniqueName)) {
-			Log.i(TAG, "Chat(): dropped our own signal received on session "
+			Log.i(TAG, "SetCanvasColor(): dropped our own signal received on session "
 					+ ctx.sessionId);
 			return;
 		}
@@ -1530,7 +1530,7 @@ import android.util.Log;
 		 * Drop signals on the hosted session unless we are joined-to-self.
 		 */
 		if (mJoinedToSelf == false && ctx.sessionId == mHostSessionId) {
-			Log.i(TAG, "Chat(): dropped signal received on hosted session "
+			Log.i(TAG, "SetCanvasColor(): dropped signal received on hosted session "
 					+ ctx.sessionId + " when not joined-to-self");
 			return;
 		}
@@ -1544,7 +1544,7 @@ import android.util.Log;
 		nickname = nickname
 				.substring(nickname.length() - 10, nickname.length());
 
-		Log.i(TAG, "Chat(): signal received from nickname "
+		Log.i(TAG, "SetCanvasColor(): signal received from nickname "
 				+ nickname);
 		MessageObject mo = new MessageObject();
 		mo.messageType = 3;
@@ -1575,14 +1575,14 @@ import android.util.Log;
 		 */
 		String uniqueName = mBus.getUniqueName();
 		MessageContext ctx = mBus.getMessageContext();
-		Log.i(TAG, "Chat(): use sessionId is " + mUseSessionId);
-		Log.i(TAG, "Chat(): message sessionId is " + ctx.sessionId);
+		Log.i(TAG, "CompressPlots(): use sessionId is " + mUseSessionId);
+		Log.i(TAG, "CompressPlots(): message sessionId is " + ctx.sessionId);
 
 		/*
 		 * Always drop our own signals which may be echoed back from the system.
 		 */
 		if (ctx.sender.equals(uniqueName)) {
-			Log.i(TAG, "Chat(): dropped our own signal received on session "
+			Log.i(TAG, "CompressPlots(): dropped our own signal received on session "
 					+ ctx.sessionId);
 			return;
 		}
@@ -1591,7 +1591,7 @@ import android.util.Log;
 		 * Drop signals on the hosted session unless we are joined-to-self.
 		 */
 		if (mJoinedToSelf == false && ctx.sessionId == mHostSessionId) {
-			Log.i(TAG, "Chat(): dropped signal received on hosted session "
+			Log.i(TAG, "CompressPlots(): dropped signal received on hosted session "
 					+ ctx.sessionId + " when not joined-to-self");
 			return;
 		}
@@ -1605,7 +1605,7 @@ import android.util.Log;
 		nickname = nickname
 				.substring(nickname.length() - 10, nickname.length());
 
-		Log.i(TAG, "Chat(): signal received from nickname "
+		Log.i(TAG, "CompressPlots(): signal received from nickname "
 				+ nickname);
 		MessageObject mo = new MessageObject();
 		mo.messageType = 4;
